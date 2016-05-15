@@ -4,5 +4,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample"
     RequestedTheme="Light">
+    <Application.Resources>
+        <!-- Theme Resources -->
+        <!-- Header -->
+        <SolidColorBrush x:Key="TitlebarBackgroundBrush"
+                         Color="#FF73B673" />
+        <SolidColorBrush x:Key="StatusbarBackgroundBrush"
+                         Color="#FF73B673" />
+        <!-- Splitview Pane -->
+        <SolidColorBrush x:Key="SplitViewBackgroundBrush"
+                         Color="#FF826499" />
+        <SolidColorBrush x:Key="SplitViewForegroundBrush"
+                         Color="White" />
+        <SolidColorBrush x:Key="SplitViewHighlightBrush"
+                         Color="#FFE48F8F" />
+        <!-- Splitview Content -->
+        <SolidColorBrush x:Key="PageBackgroundBrush"
+                         Color="#FFFFFDC4" />
 
+        <SolidColorBrush x:Key="LightGreenLeftover"
+                         Color="#FFD9F34A" />
+    </Application.Resources>
 </Application>
