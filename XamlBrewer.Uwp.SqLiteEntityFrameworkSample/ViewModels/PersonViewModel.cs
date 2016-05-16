@@ -8,7 +8,7 @@ using XamlBrewer.Uwp.SqLiteEntityFrameworkSample.Models;
 
 namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample.ViewModels
 {
-    internal class PersonViewModel : ViewModelBase
+    internal class PersonViewModel : EditableViewModel
     {
         private Person model;
         private ImageSource picture = null;

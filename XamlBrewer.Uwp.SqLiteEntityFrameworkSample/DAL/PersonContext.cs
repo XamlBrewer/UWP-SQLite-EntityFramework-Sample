@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using XamlBrewer.Uwp.SqLiteEntityFrameworkSample.Models;
 
-namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample.DAL
+namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample.Dal
 {
     public class PersonContext: DbContext
     {

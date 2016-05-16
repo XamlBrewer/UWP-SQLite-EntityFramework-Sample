@@ -96,14 +96,20 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ByteArrayBitmapExtensions.cs" />
-    <Compile Include="DAL\PersonContext.cs" />
+    <Compile Include="Dal\PersonContext.cs" />
+    <Compile Include="Dal\Repository.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
+    <Compile Include="Mvvm\BooleanNegationConverter.cs" />
+    <Compile Include="Mvvm\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Mvvm\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
+    <Compile Include="Mvvm\StringFormatConverter.cs" />
     <Compile Include="Services\Log.cs" />
     <Compile Include="Services\Scope.cs" />
     <Compile Include="Services\Theme.cs" />
     <Compile Include="Services\Toast.cs" />
+    <Compile Include="ViewModels\EditableViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MenuItem.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />

@@ -5,9 +5,71 @@
     xmlns:local="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Mvvm"
+    xmlns:vm="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample.ViewModels"
     mc:Ignorable="d">
+    <Page.Resources>
+        <mvvm:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+        <mvvm:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <mvvm:BooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter"
+                                           IsReversed="True" />
+        <mvvm:StringFormatConverter x:Key="StringFormatConverter" />
+        <mvvm:DateTimeToDateTimeOffsetConverter x:Key="DateTimeToDateTimeOffsetConverter" />
+    </Page.Resources>
 
+    <Page.DataContext>
+        <vm:MainPageViewModel />
+    </Page.DataContext>
+    
     <Grid Background="{StaticResource PageBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+    
+    <!-- Main Buttons -->
+    <StackPanel Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
+                Orientation="Horizontal">
+        <AppBarButton Icon="Setting"
+                      Label="Create"
+                      Command="{Binding CreateCommand}" />
+        <AppBarButton Icon="View"
+                      Label="View all"
+                      Command="{Binding SelectCommand}" />
+    </StackPanel>
+
+    <!-- Edit Buttons -->
+    <StackPanel Grid.Row="0"
+                Grid.Column="1"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
+        <AppBarButton Command="{Binding EditCommand}"
+                      Icon="Edit"
+                      Label="Edit" />
+        <AppBarButton Command="{Binding NewCommand}"
+                      Icon="Add"
+                      Label="New" />
+        <AppBarButton Command="{Binding DeleteCommand}"
+                      Icon="Delete"
+                      Label="Delete" />
+    </StackPanel>
+    <StackPanel Grid.Row="0"
+                Grid.Column="1"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <AppBarButton Command="{Binding CancelCommand}"
+                      Icon="Cancel"
+                      Label="Cancel" />
+        <AppBarButton Command="{Binding SaveCommand}"
+                      Icon="Save"
+                      Label="Save" />
+    </StackPanel>
     </Grid>
 </Page>

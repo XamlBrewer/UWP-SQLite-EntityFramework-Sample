@@ -15,6 +15,11 @@ namespace Mvvm
         public ViewModelBase()
         {}
 
+        public bool IsInDesignMode
+        {
+            get { return Windows.ApplicationModel.DesignMode.DesignModeEnabled; }
+        }
+
         public ObservableCollection<MenuItem> Menu {
             get { return menu; }
         }
