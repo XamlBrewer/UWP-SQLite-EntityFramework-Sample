@@ -5,7 +5,9 @@
     xmlns:local="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample"
     RequestedTheme="Light">
     <Application.Resources>
+        
         <!-- Theme Resources -->
+        
         <!-- Header -->
         <SolidColorBrush x:Key="TitlebarBackgroundBrush"
                          Color="#FF73B673" />
@@ -18,11 +20,15 @@
                          Color="White" />
         <SolidColorBrush x:Key="SplitViewHighlightBrush"
                          Color="#FFE48F8F" />
+        
         <!-- Splitview Content -->
         <SolidColorBrush x:Key="PageBackgroundBrush"
                          Color="#FFFFFDC4" />
-
-        <SolidColorBrush x:Key="LightGreenLeftover"
+        <!-- Menu Bars -->
+        <SolidColorBrush x:Key="MenuBackgroundBrush"
                          Color="#FFD9F34A" />
+        <SolidColorBrush x:Key="MenuForegroundBrush"
+                         Color="Yellow" />
+        
     </Application.Resources>
 </Application>

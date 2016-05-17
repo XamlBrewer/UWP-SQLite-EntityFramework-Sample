@@ -1,13 +1,12 @@
-﻿<Page
-    x:Class="XamlBrewer.Uwp.SqLiteEntityFrameworkSample.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mvvm="using:Mvvm"
-    xmlns:vm="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample.ViewModels"
-    mc:Ignorable="d">
+﻿<Page x:Class="XamlBrewer.Uwp.SqLiteEntityFrameworkSample.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:mvvm="using:Mvvm"
+      xmlns:vm="using:XamlBrewer.Uwp.SqLiteEntityFrameworkSample.ViewModels"
+      mc:Ignorable="d">
     <Page.Resources>
         <mvvm:BooleanNegationConverter x:Key="BooleanNegationConverter" />
         <mvvm:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -20,7 +19,7 @@
     <Page.DataContext>
         <vm:MainPageViewModel />
     </Page.DataContext>
-    
+
     <Grid Background="{StaticResource PageBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -28,48 +27,181 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-    
-    <!-- Main Buttons -->
-    <StackPanel Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
-                Orientation="Horizontal">
-        <AppBarButton Icon="Setting"
-                      Label="Create"
-                      Command="{Binding CreateCommand}" />
-        <AppBarButton Icon="View"
-                      Label="View all"
-                      Command="{Binding SelectCommand}" />
-    </StackPanel>
+        <!-- Main Buttons -->
+        <StackPanel Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Background="{StaticResource MenuBackgroundBrush}"
+                    Margin="10">
+            <AppBarButton Icon="Setting"
+                          Label="Reset"
+                          Command="{Binding CreateCommand}"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+            <AppBarButton Icon="View"
+                          Label="View all"
+                          Command="{Binding SelectCommand}"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+        </StackPanel>
 
-    <!-- Edit Buttons -->
-    <StackPanel Grid.Row="0"
+        <!-- Edit Buttons -->
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
+                    Background="{StaticResource MenuBackgroundBrush}"
+                    Margin="10">
+            <AppBarButton Command="{Binding EditCommand}"
+                          Icon="Edit"
+                          Label="Edit"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+            <AppBarButton Command="{Binding NewCommand}"
+                          Icon="Add"
+                          Label="New"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+            <AppBarButton Command="{Binding DeleteCommand}"
+                          Icon="Delete"
+                          Label="Delete"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Margin="10"
+                    Background="{StaticResource MenuBackgroundBrush}">
+            <AppBarButton Command="{Binding CancelCommand}"
+                          Icon="Cancel"
+                          Label="Cancel"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+            <AppBarButton Command="{Binding SaveCommand}"
+                          Icon="Save"
+                          Label="Save"
+                          Foreground="{StaticResource MenuForegroundBrush}" />
+        </StackPanel>
+
+        <!-- List -->
+        <ListView ItemsSource="{Binding Persons}"
+                  SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
+                  IsEnabled="{Binding IsInEditMode, Converter={StaticResource BooleanNegationConverter}}"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  Padding="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1"
+                            BorderBrush="Black"
+                            Margin="0 10">
+                        <Image Stretch="UniformToFill"
+                               Source="{Binding ImageSource}"
+                               Height="200"
+                               Width="200" />
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Details -->
+        <Border Visibility="{Binding HasSelection, Converter={StaticResource BooleanToVisibilityConverter}}"
                 Grid.Column="1"
-                Orientation="Horizontal"
-                HorizontalAlignment="Right"
-                Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
-        <AppBarButton Command="{Binding EditCommand}"
-                      Icon="Edit"
-                      Label="Edit" />
-        <AppBarButton Command="{Binding NewCommand}"
-                      Icon="Add"
-                      Label="New" />
-        <AppBarButton Command="{Binding DeleteCommand}"
-                      Icon="Delete"
-                      Label="Delete" />
-    </StackPanel>
-    <StackPanel Grid.Row="0"
-                Grid.Column="1"
-                Orientation="Horizontal"
-                HorizontalAlignment="Right"
-                Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
-        <AppBarButton Command="{Binding CancelCommand}"
-                      Icon="Cancel"
-                      Label="Cancel" />
-        <AppBarButton Command="{Binding SaveCommand}"
-                      Icon="Save"
-                      Label="Save" />
-    </StackPanel>
+                Grid.Row="1"
+                Margin="10">
+            <Grid DataContext="{Binding SelectedPerson}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Id"
+                           FontSize="20"
+                           HorizontalAlignment="Right"
+                           FontWeight="Light"
+                           Foreground="LightSlateGray" />
+                <TextBlock Grid.Column="2"
+                           Text="{Binding Id}"
+                           FontSize="20" />
+                <TextBlock Grid.Row="2"
+                           Text="Name"
+                           FontSize="20"
+                           HorizontalAlignment="Right"
+                           FontWeight="Light"
+                           Foreground="LightSlateGray" />
+                <TextBlock Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
+                           Grid.Row="2"
+                           Grid.Column="2"
+                           Text="{Binding Name}"
+                           FontSize="20" />
+                <TextBox Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         Grid.Row="2"
+                         Grid.Column="2"
+                         Text="{Binding Name, Mode=TwoWay}"
+                         FontSize="20" />
+                <TextBlock Grid.Row="4"
+                           Text="Born"
+                           FontSize="20"
+                           HorizontalAlignment="Right"
+                           FontWeight="Light"
+                           Foreground="LightSlateGray" />
+                <TextBlock Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
+                           Grid.Row="4"
+                           Grid.Column="2"
+                           Text="{Binding DayOfBirth,Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:d}'}"
+                           FontSize="20" />
+                <DatePicker Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Date="{Binding DayOfBirth, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"
+                            FontSize="20" />
+                <TextBlock Grid.Row="6"
+                           Text="Picture"
+                           Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                           FontSize="20"
+                           HorizontalAlignment="Right"
+                           FontWeight="Light"
+                           Foreground="LightSlateGray" />
+                <AppBarButton Grid.Row="6"
+                              Grid.Column="2"
+                              Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                              Command="{Binding UploadImageCommand}"
+                              Label="Change"
+                              Icon="Pictures"
+                              Margin="-8 -8 0 0" />
+
+                <TextBlock Grid.Row="8"
+                           Text="Description"
+                           FontSize="20"
+                           HorizontalAlignment="Right"
+                           FontWeight="Light"
+                           Foreground="LightSlateGray" />
+                <TextBlock Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
+                           Grid.Row="8"
+                           Grid.Column="2"
+                           Text="{Binding Description}"
+                           FontSize="20"
+                           TextWrapping="Wrap" />
+                <TextBox Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         Grid.Row="8"
+                         Grid.Column="2"
+                         Text="{Binding Description, Mode=TwoWay}"
+                         FontSize="20"
+                         TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+
     </Grid>
 </Page>

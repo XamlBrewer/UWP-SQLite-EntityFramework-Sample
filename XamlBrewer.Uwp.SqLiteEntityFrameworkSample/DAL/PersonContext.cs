@@ -1,9 +1,4 @@
 ﻿using Microsoft.Data.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using XamlBrewer.Uwp.SqLiteEntityFrameworkSample.Models;
 
 namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample.Dal
@@ -13,10 +8,12 @@ namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample.Dal
         static PersonContext()
         {
             // Before running the app for the first time, follow these steps:
+            // 0- Put this static methon in comments.
             // 1- Build -> Build the Project
             // 2- Tools –> NuGet Package Manager –> Package Manager Console
             // 3- Run "Add-Migration MyFirstMigration" to scaffold a migration to create the initial set of tables for your model
             // See here for more information https://docs.efproject.net/en/latest/platforms/uwp/getting-started.html#create-your-database
+            // 4- Uncomment this method again.
 
             using (var database = new PersonContext())
             {

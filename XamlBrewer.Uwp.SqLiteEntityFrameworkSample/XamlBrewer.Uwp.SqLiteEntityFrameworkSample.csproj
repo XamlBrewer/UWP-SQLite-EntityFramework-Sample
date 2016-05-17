@@ -98,6 +98,11 @@
     <Compile Include="ByteArrayBitmapExtensions.cs" />
     <Compile Include="Dal\PersonContext.cs" />
     <Compile Include="Dal\Repository.cs" />
+    <Compile Include="Migrations\20160516081336_MyFirstMigration.cs" />
+    <Compile Include="Migrations\20160516081336_MyFirstMigration.designer.cs">
+      <DependentUpon>20160516081336_MyFirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\PersonContextModelSnapshot.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\BooleanNegationConverter.cs" />
@@ -128,6 +133,11 @@
     <None Include="XamlBrewer.Uwp.SqLiteEntityFrameworkSample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Pictures\GoT_1.png" />
+    <Content Include="Assets\Pictures\GoT_2.png" />
+    <Content Include="Assets\Pictures\GoT_3.png" />
+    <Content Include="Assets\Pictures\GoT_4.png" />
+    <Content Include="Assets\Pictures\GoT_5.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
