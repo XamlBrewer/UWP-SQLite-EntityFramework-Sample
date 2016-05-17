@@ -10,12 +10,12 @@
         
         <!-- Header -->
         <SolidColorBrush x:Key="TitlebarBackgroundBrush"
-                         Color="#FF73B673" />
+                         Color="#FF3D0301" />
         <SolidColorBrush x:Key="StatusbarBackgroundBrush"
                          Color="#FF73B673" />
         <!-- Splitview Pane -->
         <SolidColorBrush x:Key="SplitViewBackgroundBrush"
-                         Color="#FF826499" />
+                         Color="#FF200000" />
         <SolidColorBrush x:Key="SplitViewForegroundBrush"
                          Color="White" />
         <SolidColorBrush x:Key="SplitViewHighlightBrush"
@@ -23,12 +23,12 @@
         
         <!-- Splitview Content -->
         <SolidColorBrush x:Key="PageBackgroundBrush"
-                         Color="#FFFFFDC4" />
+                         Color="#FF714812" />
         <!-- Menu Bars -->
         <SolidColorBrush x:Key="MenuBackgroundBrush"
-                         Color="#FFD9F34A" />
+                         Color="#FF592912" />
         <SolidColorBrush x:Key="MenuForegroundBrush"
-                         Color="Yellow" />
-        
+                         Color="White" />
+
     </Application.Resources>
 </Application>
