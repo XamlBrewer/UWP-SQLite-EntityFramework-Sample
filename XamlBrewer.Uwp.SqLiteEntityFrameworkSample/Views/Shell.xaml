@@ -28,7 +28,7 @@
                     <ListView ItemsSource="{Binding Menu}"
                               SelectionChanged="Menu_SelectionChanged"
                               ItemClick="Menu_ItemClick"
-                              Margin="0 48 0 0"
+                              Margin="0 50 0 0"
                               VerticalAlignment="Top"
                               IsItemClickEnabled="True">
                         <ListView.ItemTemplate>
@@ -94,9 +94,6 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid Background="Black">
-                    <Image Stretch="UniformToFill"
-                           Source="ms-appx:///Assets/peanuts.png"
-                           HorizontalAlignment="Right" />
                     <!-- Navigation Frame -->
                     <Frame x:Name="SplitViewFrame"
                            Padding="0 0 0 0">

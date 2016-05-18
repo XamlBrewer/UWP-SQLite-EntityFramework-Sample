@@ -1,30 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Mvvm;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+using XamlBrewer.Uwp.SqLiteEntityFrameworkSample.ViewModels;
 
 namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+        private MenuItem resetItem;
+        private MenuItem viewItem;
+
         public MainPage()
         {
             this.InitializeComponent();
+            resetItem = new MenuItem()
+            {
+                Glyph = Symbol.Setting,
+                Text = "Reset DB",
+                Command = (DataContext as MainPageViewModel).CreateCommand
+            };
+            viewItem = new MenuItem()
+            {
+                Glyph = Symbol.View,
+                Text = "View all",
+                Command = (DataContext as MainPageViewModel).SelectCommand
+            };
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            (this.DataContext as ViewModelBase).Menu.Add(resetItem);
+            (this.DataContext as ViewModelBase).Menu.Add(viewItem);
+            base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            (this.DataContext as ViewModelBase).Menu.Remove(resetItem);
+            (this.DataContext as ViewModelBase).Menu.Remove(viewItem);
+            base.OnNavigatedFrom(e);
+        }
+
     }
 }

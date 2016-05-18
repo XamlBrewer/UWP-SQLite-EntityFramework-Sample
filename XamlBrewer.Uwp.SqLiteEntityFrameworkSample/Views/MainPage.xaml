@@ -40,21 +40,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Main Buttons -->
-        <StackPanel Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
-                    Orientation="Horizontal"
-                    Background="{StaticResource SplitViewBackgroundBrush}"
-                    Margin="10 0 0 0"
-                    Padding="0 10">
-            <AppBarButton Icon="Setting"
-                          Label="Reset"
-                          Command="{Binding CreateCommand}"
-                          Foreground="{StaticResource MenuForegroundBrush}" />
-            <AppBarButton Icon="View"
-                          Label="View all"
-                          Command="{Binding SelectCommand}"
-                          Foreground="{StaticResource MenuForegroundBrush}" />
-        </StackPanel>
+        <!-- Background -->
+        <Image Source="ms-appx:///Assets/kings_landing.jpg"
+               Stretch="UniformToFill"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Right"
+               Grid.RowSpan="10"
+               Grid.ColumnSpan="10"
+               Opacity=".2" />
 
         <!-- Edit Buttons -->
         <StackPanel Grid.Row="0"
@@ -99,9 +92,10 @@
                   SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
                   IsEnabled="{Binding IsInEditMode, Converter={StaticResource BooleanNegationConverter}}"
                   Grid.Column="0"
-                  Grid.Row="1"
-                  Background="{StaticResource SplitViewBackgroundBrush}"
-                  Margin="10 0 0 0"
+                  Grid.Row="0"
+                  Grid.RowSpan="2"
+                  Background="Transparent"
+                  Margin="0 0 0 0"
                   ItemTemplate="{StaticResource PersonDataTemplate}">
         </ListView>
 
@@ -113,25 +107,25 @@
             <Grid DataContext="{Binding SelectedPerson}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="10" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="8" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="8" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="8" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="8" />
+                    <RowDefinition Height="10" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock Text="Id"
                            FontSize="20"
                            HorizontalAlignment="Right"
                            FontWeight="Light"
-                           Foreground="LightSlateGray" />
+                           Foreground="{StaticResource MenuForegroundBrush}" />
                 <TextBlock Grid.Column="2"
                            Text="{Binding Id}"
                            FontSize="20" />
@@ -140,7 +134,7 @@
                            FontSize="20"
                            HorizontalAlignment="Right"
                            FontWeight="Light"
-                           Foreground="LightSlateGray" />
+                           Foreground="{StaticResource MenuForegroundBrush}" />
                 <TextBlock Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
                            Grid.Row="2"
                            Grid.Column="2"
@@ -156,7 +150,7 @@
                            FontSize="20"
                            HorizontalAlignment="Right"
                            FontWeight="Light"
-                           Foreground="LightSlateGray" />
+                           Foreground="{StaticResource MenuForegroundBrush}" />
                 <TextBlock Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
                            Grid.Row="4"
                            Grid.Column="2"
@@ -173,21 +167,21 @@
                            FontSize="20"
                            HorizontalAlignment="Right"
                            FontWeight="Light"
-                           Foreground="LightSlateGray" />
+                           Foreground="{StaticResource MenuForegroundBrush}" />
                 <AppBarButton Grid.Row="6"
                               Grid.Column="2"
                               Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
                               Command="{Binding UploadImageCommand}"
                               Label="Change"
                               Icon="Pictures"
-                              Margin="-8 -8 0 0" />
+                              Margin="-10 -10 0 0" />
 
                 <TextBlock Grid.Row="8"
-                           Text="Description"
+                           Text="Biography"
                            FontSize="20"
                            HorizontalAlignment="Right"
                            FontWeight="Light"
-                           Foreground="LightSlateGray" />
+                           Foreground="{StaticResource MenuForegroundBrush}" />
                 <TextBlock Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}"
                            Grid.Row="8"
                            Grid.Column="2"

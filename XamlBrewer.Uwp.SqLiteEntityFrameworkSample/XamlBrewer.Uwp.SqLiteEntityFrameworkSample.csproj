@@ -133,6 +133,7 @@
     <None Include="XamlBrewer.Uwp.SqLiteEntityFrameworkSample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\kings_landing.jpg" />
     <Content Include="Assets\Pictures\GoT_1.png" />
     <Content Include="Assets\Pictures\GoT_2.png" />
     <Content Include="Assets\Pictures\GoT_3.png" />
