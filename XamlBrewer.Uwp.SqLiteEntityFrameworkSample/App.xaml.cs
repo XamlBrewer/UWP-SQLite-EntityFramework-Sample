@@ -33,7 +33,7 @@ namespace XamlBrewer.Uwp.SqLiteEntityFrameworkSample
         {
             // Apply the MVVM Theme Service.
             Theme.ApplyToContainer();
-            Application.Current.Resources["SystemControlHighlightListAccentLowBrush"] = (SolidColorBrush)this.Resources["TitlebarBackgroundBrush"]; ;
+            Application.Current.Resources["SystemControlHighlightListAccentLowBrush"] = (SolidColorBrush)this.Resources["MenuForegroundBrush"]; ;
             // Application.Current.Resources["SystemControlHighlightListAccentMediumBrush"] = new SolidColorBrush(Colors.Red);
 
             Frame rootFrame = Window.Current.Content as Frame;
